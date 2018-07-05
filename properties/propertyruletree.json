@@ -1,0 +1,307 @@
+{
+    "accountId": "act_1-5BYUG1",
+    "contractId": "ctr_1-5C13O2",
+    "groupId": "grp_105805",
+    "propertyId": "prp_471595",
+    "propertyName": "devops.viola.nu",
+    "propertyVersion": 2,
+    "etag": "7616fe8a191f53cbc8745cff841ae98d2fad1c82",
+    "rules": {
+        "name": "default",
+        "children": [
+            {
+                "name": "Content Compression",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "gzipResponse",
+                        "options": {
+                            "behavior": "ALWAYS"
+                        }
+                    }
+                ],
+                "criteria": [
+                    {
+                        "name": "contentType",
+                        "options": {
+                            "matchCaseSensitive": false,
+                            "matchOperator": "IS_ONE_OF",
+                            "matchWildcard": true,
+                            "values": [
+                                "text/*",
+                                "application/javascript",
+                                "application/x-javascript",
+                                "application/x-javascript*",
+                                "application/json",
+                                "application/x-json",
+                                "application/*+json",
+                                "application/*+xml",
+                                "application/text",
+                                "application/vnd.microsoft.icon",
+                                "application/vnd-ms-fontobject",
+                                "application/x-font-ttf",
+                                "application/x-font-opentype",
+                                "application/x-font-truetype",
+                                "application/xmlfont/eot",
+                                "application/xml",
+                                "font/opentype",
+                                "font/otf",
+                                "font/eot",
+                                "image/svg+xml",
+                                "image/vnd.microsoft.icon"
+                            ]
+                        }
+                    }
+                ],
+                "criteriaMustSatisfy": "all"
+            },
+            {
+                "name": "Static Content",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "caching",
+                        "options": {
+                            "behavior": "MAX_AGE",
+                            "mustRevalidate": false,
+                            "ttl": "1d"
+                        }
+                    },
+                    {
+                        "name": "prefetch",
+                        "options": {
+                            "enabled": false
+                        }
+                    },
+                    {
+                        "name": "prefetchable",
+                        "options": {
+                            "enabled": true
+                        }
+                    }
+                ],
+                "criteria": [
+                    {
+                        "name": "fileExtension",
+                        "options": {
+                            "matchCaseSensitive": false,
+                            "matchOperator": "IS_ONE_OF",
+                            "values": [
+                                "aif",
+                                "aiff",
+                                "au",
+                                "avi",
+                                "bin",
+                                "bmp",
+                                "cab",
+                                "carb",
+                                "cct",
+                                "cdf",
+                                "class",
+                                "css",
+                                "doc",
+                                "dcr",
+                                "dtd",
+                                "exe",
+                                "flv",
+                                "gcf",
+                                "gff",
+                                "gif",
+                                "grv",
+                                "hdml",
+                                "hqx",
+                                "ico",
+                                "ini",
+                                "jpeg",
+                                "jpg",
+                                "js",
+                                "mov",
+                                "mp3",
+                                "nc",
+                                "pct",
+                                "pdf",
+                                "png",
+                                "ppc",
+                                "pws",
+                                "swa",
+                                "swf",
+                                "txt",
+                                "vbs",
+                                "w32",
+                                "wav",
+                                "wbmp",
+                                "wml",
+                                "wmlc",
+                                "wmls",
+                                "wmlsc",
+                                "xsd",
+                                "zip",
+                                "pict",
+                                "tif",
+                                "tiff",
+                                "mid",
+                                "midi",
+                                "ttf",
+                                "eot",
+                                "woff",
+                                "woff2",
+                                "otf",
+                                "svg",
+                                "svgz",
+                                "webp",
+                                "jxr",
+                                "jar",
+                                "jp2"
+                            ]
+                        }
+                    }
+                ],
+                "criteriaMustSatisfy": "all"
+            },
+            {
+                "name": "Dynamic Content",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "downstreamCache",
+                        "options": {
+                            "behavior": "TUNNEL_ORIGIN"
+                        }
+                    }
+                ],
+                "criteria": [
+                    {
+                        "name": "cacheability",
+                        "options": {
+                            "matchOperator": "IS_NOT",
+                            "value": "CACHEABLE"
+                        }
+                    }
+                ],
+                "criteriaMustSatisfy": "all"
+            },
+            {
+                "name": "Performance",
+                "children": [],
+                "behaviors": [
+                    {
+                        "name": "http2",
+                        "options": {
+                            "enabled": ""
+                        }
+                    },
+                    {
+                        "name": "allowTransferEncoding",
+                        "options": {
+                            "enabled": true
+                        }
+                    },
+                    {
+                        "name": "removeVary",
+                        "options": {
+                            "enabled": true
+                        }
+                    }
+                ],
+                "criteria": [],
+                "criteriaMustSatisfy": "all",
+                "comments": "Improves the performance of delivering objects to end users. Behaviors in this rule are applied to all requests as appropriate."
+            }
+        ],
+        "behaviors": [
+            {
+                "name": "origin",
+                "options": {
+                    "originType": "CUSTOMER",
+                    "hostname": "devops.home.viola.nu",
+                    "forwardHostHeader": "REQUEST_HOST_HEADER",
+                    "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                    "compress": true,
+                    "enableTrueClientIp": false,
+                    "httpPort": 80
+                }
+            },
+            {
+                "name": "cpCode",
+                "options": {
+                    "value": {
+                        "id": 641653,
+                        "description": "www.viola.nu",
+                        "products": [
+                            "Site_Accel"
+                        ],
+                        "createdDate": 1510328706000,
+                        "name": "www.viola.nu"
+                    }
+                }
+            },
+            {
+                "name": "caching",
+                "options": {
+                    "behavior": "NO_STORE"
+                }
+            },
+            {
+                "name": "sureRoute",
+                "options": {
+                    "enabled": false
+                }
+            },
+            {
+                "name": "tieredDistribution",
+                "options": {
+                    "enabled": false
+                }
+            },
+            {
+                "name": "prefetch",
+                "options": {
+                    "enabled": false
+                }
+            },
+            {
+                "name": "allowPost",
+                "options": {
+                    "allowWithoutContentLength": false,
+                    "enabled": true
+                }
+            },
+            {
+                "name": "report",
+                "options": {
+                    "logAcceptLanguage": false,
+                    "logCookies": "OFF",
+                    "logCustomLogField": false,
+                    "logHost": false,
+                    "logReferer": false,
+                    "logUserAgent": true
+                }
+            },
+            {
+                "name": "realUserMonitoring",
+                "options": {
+                    "enabled": false
+                }
+            }
+        ],
+        "options": {
+            "is_secure": false
+        },
+        "variables": []
+    },
+    "warnings": [
+        {
+            "type": "https://problems.luna.akamaiapis.net/papi/v0/validation/need_feature",
+            "errorLocation": "#/rules/children/1/behaviors/2",
+            "detail": "Enabling `Prefetchable Objects` will not have any effect unless you also set a base, or container, page by enabling Prefetch Objects for the container pages."
+        },
+        {
+            "title": "Unstable rule format",
+            "type": "https://problems.luna.akamaiapis.net/papi/v0/unstable_rule_format",
+            "detail": "This property is using `latest` rule format, which is designed to reflect interface changes immediately. We suggest converting the property to a stable rule format such as `v2018-02-27` to minimize the risk of interface changes breaking your API client program.",
+            "currentRuleFormat": "latest",
+            "suggestedRuleFormat": "v2018-02-27"
+        }
+    ],
+    "ruleFormat": "latest"
+}
